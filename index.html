@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TMC · Captura de Leads</title>
+<meta name="description" content="Publicidad que guía y convierte en ventas reales.">
+<style>
+  :root{
+    --marble:#0D0D0D;
+    --card:#141414;
+    --line:#262626;
+    --line-soft:#1d1d1d;
+    --orange:#FF7A00;
+    --orange-deep:#D4621A;
+    --blue:#2A6FA8;
+    --gold:#C9A84C;
+    --silver:#9aa0a6;
+    --text:#ECECEC;
+    --ok:#4FB477;
+    --err:#E0584F;
+    --wa:#25D366;
+    --radius:14px;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    background:
+      radial-gradient(900px 500px at 80% -10%, rgba(42,111,168,.10), transparent 60%),
+      radial-gradient(700px 500px at -10% 110%, rgba(255,122,0,.08), transparent 60%),
+      var(--marble);
+    color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    display:flex;align-items:center;justify-content:center;
+    min-height:100dvh;padding:24px;
+    -webkit-font-smoothing:antialiased;
+  }
+  .card{
+    width:100%;max-width:440px;
+    background:linear-gradient(180deg,#161616,#101010);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:30px 28px 26px;
+    box-shadow:0 24px 60px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.03);
+  }
+  .brand{display:flex;align-items:center;gap:12px;margin-bottom:22px}
+  .mark{
+    width:42px;height:42px;flex:0 0 42px;border-radius:10px;
+    display:grid;place-items:center;
+    background:linear-gradient(135deg,#1c1c1c,#0d0d0d);
+    border:1px solid var(--line);
+    color:var(--gold);font-weight:800;letter-spacing:.5px;font-size:13px;
+  }
+  .mark span{transform:translateY(1px)}
+  .brand-meta{line-height:1.2}
+  .brand-name{font-weight:700;font-size:15px;letter-spacing:.5px}
+  .brand-tag{color:var(--silver);font-size:11.5px;margin-top:3px;letter-spacing:.2px}
+  .eyebrow{
+    color:var(--orange);font-size:11px;font-weight:700;letter-spacing:2px;
+    text-transform:uppercase;margin:0 0 6px;
+  }
+  h1{font-size:21px;margin:0 0 4px;letter-spacing:.2px}
+  .sub{color:var(--silver);font-size:13px;margin:0 0 22px;line-height:1.5}
+  .field{margin-bottom:14px}
+  label{display:block;font-size:12px;color:var(--silver);margin-bottom:7px;letter-spacing:.3px}
+  input{
+    width:100%;padding:13px 14px;
+    background:#0f0f0f;border:1px solid var(--line);
+    color:var(--text);border-radius:9px;font-size:15px;
+    transition:border-color .15s ease, box-shadow .15s ease;
+  }
+  input::placeholder{color:#5a5f66}
+  input:focus{
+    outline:none;border-color:var(--orange);
+    box-shadow:0 0 0 3px rgba(255,122,0,.16);
+  }
+  .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+  button{
+    width:100%;margin-top:8px;padding:14px;
+    display:flex;align-items:center;justify-content:center;gap:9px;
+    background:linear-gradient(180deg,var(--orange),var(--orange-deep));
+    border:none;border-radius:9px;color:#120a02;
+    font-weight:800;font-size:15px;letter-spacing:.4px;cursor:pointer;
+    transition:transform .08s ease, filter .15s ease;
+  }
+  button:hover{filter:brightness(1.06)}
+  button:active{transform:translateY(1px)}
+  button:disabled{opacity:.55;cursor:not-allowed;filter:none}
+  button svg{width:18px;height:18px;flex:0 0 18px}
+  .status{
+    min-height:18px;margin-top:14px;font-size:13px;text-align:center;
+    letter-spacing:.2px;transition:color .15s ease;
+  }
+  .status.ok{color:var(--ok)}
+  .status.err{color:var(--err)}
+  .foot{
+    margin-top:20px;padding-top:16px;border-top:1px solid var(--line-soft);
+    color:#5f656c;font-size:11px;text-align:center;letter-spacing:.3px;
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<div class="card">
+  <div class="brand">
+    <div class="mark"><span>TMC</span></div>
+    <div class="brand-meta">
+      <div class="brand-name">Tendencia Marketing</div>
+      <div class="brand-tag">Publicidad que guía y convierte en ventas reales.</div>
+    </div>
+  </div>
+
+  <p class="eyebrow">Solicita tu diagnóstico</p>
+  <h1>Hablemos de tu próxima campaña</h1>
+  <p class="sub">Déjanos tus datos y abriremos WhatsApp para continuar la conversación.</p>
+
+  <div class="field">
+    <label for="nombre">Nombre completo</label>
+    <input type="text" id="nombre" autocomplete="name" placeholder="Tu nombre">
+  </div>
+
+  <div class="field">
+    <label for="whatsapp">Tu WhatsApp</label>
+    <input type="tel" id="whatsapp" inputmode="tel" autocomplete="tel" placeholder="618 123 4567">
+  </div>
+
+  <div class="field">
+    <label for="email">Correo electrónico</label>
+    <input type="email" id="email" autocomplete="email" placeholder="tu@correo.com">
+  </div>
+
+  <!-- Anti-spam: campo trampa invisible. No lo elimines. -->
+  <input type="text" id="empresa_web" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+  <button id="btn" onclick="enviarLead()">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2A9.94 9.94 0 0 0 2.1 11.94c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01A9.94 9.94 0 0 0 22 11.95 9.94 9.94 0 0 0 12.04 2Zm5.8 14.2c-.25.7-1.45 1.33-2 1.37-.55.04-1.06.24-3.57-.75-3-1.18-4.92-4.27-5.07-4.47-.15-.2-1.22-1.62-1.22-3.1s.78-2.2 1.05-2.5c.27-.3.6-.38.8-.38l.57.01c.18.01.43-.07.67.52.25.6.84 2.08.91 2.23.07.15.12.32.02.52-.1.2-.15.32-.3.5-.15.17-.31.39-.45.52-.15.15-.3.31-.13.6.17.3.76 1.25 1.63 2.02 1.12 1 2.06 1.31 2.36 1.46.3.15.47.12.64-.07.17-.2.74-.86.94-1.16.2-.3.4-.25.67-.15.27.1 1.71.8 2 .95.3.15.5.22.57.35.07.12.07.72-.18 1.42Z"/></svg>
+    Continuar por WhatsApp
+  </button>
+
+  <div class="status" id="status" role="status" aria-live="polite"></div>
+
+  <div class="foot">TMC · Durango, México</div>
+</div>
+
+<script>
+  /* ─────────────────────────────────────────────
+     CONFIGURACIÓN — pon aquí TU número de WhatsApp
+     Formato: código de país + número, solo dígitos.
+     México: 52 + tus 10 dígitos.  Ej: 526181234567
+     ───────────────────────────────────────────── */
+  const MI_WHATSAPP = "526183284934";
+
+  const $ = (id) => document.getElementById(id);
+  const status = $("status");
+  const btn = $("btn");
+
+  function setStatus(msg, type){
+    status.textContent = msg;
+    status.className = "status" + (type ? " " + type : "");
+  }
+
+  // Lee parámetros UTM de la URL para saber de qué campaña vino el lead
+  function getUTM(){
+    const p = new URLSearchParams(window.location.search);
+    const u = {
+      source:   p.get("utm_source")   || "",
+      campaign: p.get("utm_campaign") || ""
+    };
+    return u;
+  }
+
+  function enviarLead(){
+    const nombre   = $("nombre").value.trim();
+    const whatsapp = $("whatsapp").value.trim();
+    const email    = $("email").value.trim();
+    const trampa   = $("empresa_web").value; // honeypot
+
+    if (trampa) { setStatus("Datos enviados correctamente.", "ok"); return; }
+
+    if (!nombre || !whatsapp || !email){
+      setStatus("Completa todos los campos para continuar.", "err");
+      return;
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
+      setStatus("Revisa el correo: no parece válido.", "err");
+      return;
+    }
+    const soloDigitos = whatsapp.replace(/\D/g, "");
+    if (soloDigitos.length < 10){
+      setStatus("El WhatsApp debe tener al menos 10 dígitos.", "err");
+      return;
+    }
+    if (MI_WHATSAPP.includes("X")){
+      setStatus("Falta configurar tu número de WhatsApp en el código.", "err");
+      return;
+    }
+
+    // Arma el mensaje que TÚ recibirás con los datos del lead
+    const utm = getUTM();
+    const lineas = [
+      "Hola TMC, quiero mi diagnóstico.",
+      "",
+      "Nombre: " + nombre,
+      "WhatsApp: " + soloDigitos,
+      "Correo: " + email
+    ];
+    if (utm.campaign) lineas.push("Campaña: " + utm.campaign);
+    if (utm.source)   lineas.push("Origen: " + utm.source);
+
+    const texto = encodeURIComponent(lineas.join("\n"));
+    const url = "https://wa.me/" + MI_WHATSAPP + "?text=" + texto;
+
+    setStatus("Abriendo WhatsApp…", "ok");
+    window.open(url, "_blank");
+  }
+
+  // Enviar con Enter desde cualquier campo
+  document.querySelectorAll("input").forEach(inp => {
+    inp.addEventListener("keydown", e => { if (e.key === "Enter") enviarLead(); });
+  });
+</script>
+
+</body>
+</html>
